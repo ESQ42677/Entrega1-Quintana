@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #A8DADC;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo-barra img {
+    width: 50px;
+}
+
+.logo-barra h1 {
+    color: #1D3557;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: #1D3557;
+    text-decoration: none;
+}
+
+input#busqueda {
+    padding: 0.5rem;
+    border: 1px solid #457B9D;
+    border-radius: 5px;
+}
+
+#slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.slider-item {
+    min-width: 300px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #A8DADC;
+    color: #1D3557;
+}
