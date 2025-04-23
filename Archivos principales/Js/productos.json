@@ -1,0 +1,62 @@
+[
+    {
+        "id": "remera1",
+        "titulo": "Remera Blanca",
+        "img": "./imagenes/12005113195_1.jpg.webp",
+        "precio": 5500
+    },
+    {
+        "id": "remera2",
+        "titulo": "Remera Negra",
+        "img": "./imagenes/11249099121_2.jpg",
+        "precio": 6500
+    },
+    {
+        "id": "remera3",
+        "titulo": "Remera Azul",
+        "img": "./imagenes/11003601101134_3.jpg",
+        "precio": 6000
+    },
+    {
+        "id": "remera4",
+        "titulo": "Remera Roja",
+        "img": "./imagenes/12245132199100_4.jpg",
+        "precio": 7000
+    },
+    {
+        "id": "remera5",
+        "titulo": "Remera Verde",
+        "img": "./imagenes/12255824191_5.jpg",
+        "precio": 5500
+    },
+    {
+        "id": "remera6",
+        "titulo": "Remera Amarilla",
+        "img": "./imagenes/12255824191100_6.jpg",
+        "precio": 6500
+    },
+    {
+        "id": "remera7",
+        "titulo": "Remera Gris",
+        "img": "./imagenes/11249613102_7.jpg",
+        "precio": 6500
+    },
+    {
+        "id": "remera8",
+        "titulo": "Remera Celeste",
+        "img": "./imagenes/11239225156_8.jpg",
+        "precio": 6500
+    },
+    {
+        "id": "remera9",
+        "titulo": "Remera Violeta",
+        "img": "./imagenes/11239225170101_9.jpg",
+        "precio": 4500
+    },
+    {
+        "id": "remera10",
+        "titulo": "Remera Rosa",
+        "img": "./imagenes/12005113101_10.jpg",
+        "precio": 5000
+    }
+]

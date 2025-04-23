@@ -1,3 +1,4 @@
+const app = document.querySelector("#app");
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 
 const contenedorCarritoProductos = document.querySelector(".contenedor-carrito");
@@ -13,64 +14,52 @@ function cargarProductosCarrito() {
             div.classList.add("carrito-producto");
             div.innerHTML = `
                 <img class="carrito-producto-imagen" src="${producto.img}" alt="${producto.titulo}">
-                <div class="carrito-producto-titulo">
-                    <small>Título</small>
+                <div class="carrito-producto-detalles">
                     <h3>${producto.titulo}</h3>
+                    <p>Precio: $${producto.precio}</p>
+                    <p>Cantidad: ${producto.cantidad}</p>
+                    <p>Subtotal: $${producto.precio * producto.cantidad}</p>
                 </div>
-                <div class="carrito-producto-cantidad">
-                    <small>Cantidad</small>
-                    <p>${producto.cantidad}</p>
-                </div>
-                <div class="carrito-producto-precio">
-                    <small>Precio</small>
-                    <p>$${producto.precio}</p>
-                </div>
-                <div class="carrito-producto-subtotal">
-                    <small>Subtotal</small>
-                    <p>$${producto.precio * producto.cantidad}</p>
-                </div>
-                <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
+                <button class="carrito-producto-eliminar" id="${producto.id}">Eliminar</button>
             `;
             contenedorCarritoProductos.append(div);
         });
 
         actualizarBotonesEliminar();
-        actualizarTotal();
     } else {
-        contenedorCarritoProductos.innerHTML = `<p class="carrito-vacio">Tu carrito aún está vacío.</p>`;
+        contenedorCarritoProductos.innerHTML = `<p class="carrito-vacio">Tu carrito aún está vacío <i class="bi bi-emoji-frown"></i></p>`;
     }
 }
 
 function actualizarBotonesEliminar() {
     const botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
     botonesEliminar.forEach(boton => {
-        boton.addEventListener("click", eliminarDelCarrito);
+        boton.addEventListener("click", e => {
+            const idProducto = e.currentTarget.id;
+            productosEnCarrito = productosEnCarrito.filter(producto => producto.id !== idProducto);
+
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+            cargarProductosCarrito();
+        });
     });
 }
 
-function eliminarDelCarrito(e) {
-    const idProducto = e.currentTarget.id;
-    productosEnCarrito = productosEnCarrito.filter(producto => producto.id !== idProducto);
-
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCarrito();
-}
-
-function vaciarCarrito() {
+botonVaciar.addEventListener("click", () => {
     productosEnCarrito = [];
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
     cargarProductosCarrito();
-}
+});
 
-function actualizarTotal() {
-    const total = productosEnCarrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0);
-    document.querySelector(".carrito-acciones-total p:last-child").innerText = `$${total}`;
-}
-
-botonVaciar.addEventListener("click", vaciarCarrito);
 botonComprar.addEventListener("click", () => {
-    alert("Gracias por tu compra!");
-    vaciarCarrito();
+    if (productosEnCarrito.length === 0) {
+        alert("El carrito está vacío. Agrega productos antes de comprar.");
+        return;
+    }
+
+    alert("¡Gracias por tu compra!");
+    productosEnCarrito = [];
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    cargarProductosCarrito();
 });
 
 cargarProductosCarrito();
